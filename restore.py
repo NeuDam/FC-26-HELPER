@@ -36,15 +36,15 @@ class RestoreFilesFC26:
     def __configure_fc26_files(self) -> None:
         # rd windows command to delete folder and its contents
         subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\fcsetup"],
-                       shell=True, check=True)
+                       shell=True, check=False)
         subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\umcache"],
-                       shell=True, check=True)
+                       shell=True, check=False)
         subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\filesystemcache"],
-                       shell=True, check=True)
+                       shell=True, check=False)
         subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\twinkle"],
-                       shell=True, check=True)
+                       shell=True, check=False)
         subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\twinkle_temp"],
-                       shell=True, check=True)
+                       shell=True, check=False)
 
         # rename file
         fcsetup_file = str(FC_26_PATH) + "\\fcsetup.ini"
@@ -60,10 +60,10 @@ class RestoreFilesFC26:
         for path in [DX_CACHE_PATH, GL_CACHE_PATH]:
             if Path(path).exists() and Path(path).is_dir():
                 subprocess.run(["del", "/q", str(path) + "\\*.*"],
-                               shell=True, check=True)
+                               shell=True, check=False)
                 subprocess.run(["for", "/d", "%i", "in", f"({path}\\*)", "do",
                                 "rmdir", "/s", "/q", "%i"],
-                               shell=True, check=True)
+                               shell=True, check=False)
 
     def __check_fc26_nvidia_dir(self) -> bool:
 
