@@ -35,15 +35,15 @@ class RestoreFilesFC26:
 
     def __configure_fc26_files(self) -> None:
         # rd windows command to delete folder and its contents
-        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH + "\\fcsetup")],
+        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\fcsetup"],
                        shell=True, check=True)
-        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH + "\\umcache")],
+        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\umcache"],
                        shell=True, check=True)
-        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH + "\\filesystemcache")],
+        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\filesystemcache"],
                        shell=True, check=True)
-        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH + "\\twinkle")],
+        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\twinkle"],
                        shell=True, check=True)
-        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH + "\\twinkle_temp")],
+        subprocess.run(["rd", "/s", "/q", str(FC_26_PATH) + "\\twinkle_temp"],
                        shell=True, check=True)
 
         # rename file
@@ -59,7 +59,7 @@ class RestoreFilesFC26:
         GL_CACHE_PATH = NVIDIA_PATH + "\\GLCache"
         for path in [DX_CACHE_PATH, GL_CACHE_PATH]:
             if Path(path).exists() and Path(path).is_dir():
-                subprocess.run(["del", "/q", str(path + "\\*.*")],
+                subprocess.run(["del", "/q", str(path) + "\\*.*"],
                                shell=True, check=True)
                 subprocess.run(["for", "/d", "%i", "in", f"({path}\\*)", "do",
                                 "rmdir", "/s", "/q", "%i"],
