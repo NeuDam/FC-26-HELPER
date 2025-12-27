@@ -47,16 +47,16 @@ class RestoreFilesFC26:
                        shell=True, check=True)
 
         # rename file
-        fcsetup_file = FC_26_PATH + "\\fcsetup.ini"
-        fcsetup_file_renamed = FC_26_PATH + "\\fcsetup_" + self.__get_random_string() + \
+        fcsetup_file = str(FC_26_PATH) + "\\fcsetup.ini"
+        fcsetup_file_renamed = str(FC_26_PATH) + "\\fcsetup_" + self.__get_random_string() + \
             ".ini"
         Path(fcsetup_file).rename(fcsetup_file_renamed)
         pass
 
     def __configure_nvidia_files(self) -> None:
         # DELETE ALL THE CONTENT INSIDE OF NVIDIA PATH
-        DX_CACHE_PATH = NVIDIA_PATH + "\\DXCache"
-        GL_CACHE_PATH = NVIDIA_PATH + "\\GLCache"
+        DX_CACHE_PATH = str(NVIDIA_PATH) + "\\DXCache"
+        GL_CACHE_PATH = str(NVIDIA_PATH) + "\\GLCache"
         for path in [DX_CACHE_PATH, GL_CACHE_PATH]:
             if Path(path).exists() and Path(path).is_dir():
                 subprocess.run(["del", "/q", str(path) + "\\*.*"],
